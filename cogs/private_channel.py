@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from colorama import Fore, Style
 
 
 class CreateChannel(commands.Cog):
@@ -12,8 +13,8 @@ class CreateChannel(commands.Cog):
     async def on_voice_state_update(
             self,
             member: discord.Option(discord.Member, required=True),
-            before: discord.VoiceChannel,
-            after: discord.VoiceChannel
+            before,
+            after
     ):
         if before.channel is None and after.channel is not None:
             if after.channel.id == 1359495573174091836:
@@ -32,6 +33,12 @@ class CreateChannel(commands.Cog):
                         return len(channel.members) == 0
                     await self.bot.wait_for('voice_state_update', check=check)
                     await channel.delete()
+
+
+    @discord.Cog.listener("on_ready")
+    async def on_ready(self):
+        print(
+            f"{Fore.YELLOW + Style.BRIGHT}Priv Ch{Fore.RESET + Style.RESET_ALL}\tCog status: \t{Fore.GREEN}[OK]{Fore.RESET}")
 
 
 def setup(bot):

@@ -1,8 +1,8 @@
 import discord
-from discord.ext import commands, tasks
 import os
 from dotenv import load_dotenv
 from colorama import Fore, Style
+from embeds.exception import ExceptionEmbed
 
 load_dotenv()
 
@@ -32,6 +32,15 @@ async def on_ready():
     #     print(f"Synced {len(synced)} command(s) to debug guild")
     # except Exception as e:
     #     print(f"Failed to sync commands: {e}")
+
+
+@bot.event
+async def on_application_command_error(ctx: discord.ApplicationContext, error):
+    print("Raised globally", type(error))
+    print(error)
+
+    embed = ExceptionEmbed(error)
+    await ctx.respond(embed=embed)
 
 
 # load extension/cogs
