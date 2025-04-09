@@ -9,7 +9,12 @@ class CreateChannel(commands.Cog):
 
 
     @commands.Cog.listener()
-    async def on_voice_state_update(self, member, before, after):
+    async def on_voice_state_update(
+            self,
+            member: discord.Option(discord.Member, required=True),
+            before: discord.VoiceChannel,
+            after: discord.VoiceChannel
+    ):
         if before.channel is None and after.channel is not None:
             if after.channel.id == 1359495573174091836:
                 for guild in self.bot.guilds:
