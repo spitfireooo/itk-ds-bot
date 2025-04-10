@@ -38,7 +38,7 @@ class CreateChannel(commands.Cog):
     @discord.Cog.listener("on_ready")
     async def on_ready(self):
         print(
-            f"{Fore.YELLOW + Style.BRIGHT}Priv Ch{Fore.RESET + Style.RESET_ALL}\tCog status: \t{Fore.GREEN}[OK]{Fore.RESET}")
+            f"{Fore.YELLOW + Style.BRIGHT}Private{Fore.RESET + Style.RESET_ALL}\tCog status: \t{Fore.GREEN}[OK]{Fore.RESET}")
 
 
 def setup(bot):

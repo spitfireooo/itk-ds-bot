@@ -7,5 +7,5 @@ class ExceptionEmbed(Embed):
         super().__init__(*args, **kwargs)
         self.title = "📛 Exception"
         self.color = 0xff0000
-        self.add_field(name="Type", value="type")
-        self.add_field(name="Description", value="desc")
+        self.add_field(name="Type", value=type(error).__name__)
+        self.add_field(name="Description", value=str(error))

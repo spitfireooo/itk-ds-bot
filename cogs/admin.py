@@ -60,12 +60,12 @@ class AdminCog(discord.Cog):
         reason: discord.Option(str, min_length=3, max_length=100, required=False)
     ):
         await member.kick(reason=reason)
-        # embed = AdminEmbed(
-        #     # author=ctx.author,
-        #     title=f"Kick {member} user",
-        #     description=f"Kicked {member}"
-        # )
-        await ctx.respond(f"User kicked: {member.name}", delete_after=5)
+        embed = AdminEmbed(
+            author=ctx.author,
+            title=f"Kick {member} user",
+            description=f"Kicked {member}"
+        )
+        await ctx.respond(delete_after=5, embed=embed)
 
 
     @discord.command(name="mute", description="Mute user /mute <user> <time> <type> <reason>")
