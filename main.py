@@ -23,15 +23,14 @@ async def test(ctx: discord.ApplicationContext):
 
 @bot.event
 async def on_ready():
-    os.system('cls')
-    print(
-        f'{Fore.YELLOW + Style.BRIGHT}Bot{Fore.RESET + Style.RESET_ALL} started status: \t{Fore.GREEN}[OK]{Fore.RESET}\n')
+    # os.system('cls')
+    print(f'{Fore.YELLOW + Style.BRIGHT}Bot{Fore.RESET + Style.RESET_ALL} started status: \t{Fore.GREEN}[OK]{Fore.RESET}\n')
 
 
 @bot.event
 async def on_application_command_error(ctx: discord.ApplicationContext, error):
     embed = ExceptionEmbed(error)
-    await ctx.respond(embed=embed)
+    await ctx.respond(embed=embed, delete_after=15, ephemeral=True)
 
 
 # load extension/cogs
