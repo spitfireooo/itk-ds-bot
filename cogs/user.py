@@ -3,6 +3,8 @@ import discord
 from colorama import Fore, Style
 from discord import ApplicationContext
 
+from utils.cog_status_printer import status_printer
+
 
 class UserCog(discord.Cog):
 
@@ -17,7 +19,7 @@ class UserCog(discord.Cog):
 
     @discord.Cog.listener("on_ready")
     async def on_ready(self):
-        print(f"{Fore.YELLOW + Style.BRIGHT}User{Fore.RESET + Style.RESET_ALL}\tCog status: \t{Fore.GREEN}[OK]{Fore.RESET}")
+        status_printer("User")
 
 
 def setup(bot: discord.Bot):

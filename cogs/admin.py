@@ -3,10 +3,10 @@ import asyncio
 import discord
 from discord import ApplicationContext
 from discord.ext import commands
-from colorama import Fore, Style
 from datetime import timedelta
 
 from embeds.admin import AdminEmbed
+from utils.cog_status_printer import status_printer
 
 
 class AdminCog(discord.Cog):
@@ -151,7 +151,7 @@ class AdminCog(discord.Cog):
 
     @discord.Cog.listener("on_ready")
     async def on_ready(self):
-        print(f"{Fore.YELLOW+Style.BRIGHT}Admin{Fore.RESET+Style.RESET_ALL}\tCog status: \t{Fore.GREEN}[OK]{Fore.RESET}")
+        status_printer("Admin")
 
 
 def setup(bot: discord.Bot):

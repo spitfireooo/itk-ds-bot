@@ -4,9 +4,9 @@ from discord.ext import commands
 from embeds.innovation import InnovationEmbed, InnovationInfoEmbed
 from interfaces.innovation import InnovationView
 from interfaces.innovation import InnovationModal
-from colorama import Fore, Style
 from discord import ApplicationContext, Attachment
 
+from utils.cog_status_printer import status_printer
 from utils.add_reaction import add_reaction_on_message
 
 
@@ -61,7 +61,7 @@ class InnovationCog(discord.Cog):
 
     @discord.Cog.listener("on_ready")
     async def on_ready(self):
-        print(f"{Fore.YELLOW + Style.BRIGHT}Innov{Fore.RESET + Style.RESET_ALL}\tCog status: \t{Fore.GREEN}[OK]{Fore.RESET}")
+        status_printer("Innov")
 
 
 def setup(bot: discord.Bot):

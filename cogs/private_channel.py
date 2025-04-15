@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from colorama import Fore, Style
 
+from utils.cog_status_printer import status_printer
 
 class CreateChannel(commands.Cog):
 
@@ -37,8 +38,7 @@ class CreateChannel(commands.Cog):
 
     @discord.Cog.listener("on_ready")
     async def on_ready(self):
-        print(
-            f"{Fore.YELLOW + Style.BRIGHT}Private{Fore.RESET + Style.RESET_ALL}\tCog status: \t{Fore.GREEN}[OK]{Fore.RESET}")
+        status_printer("Private")
 
 
 def setup(bot):

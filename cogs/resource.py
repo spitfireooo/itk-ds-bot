@@ -7,6 +7,7 @@ from discord import ApplicationContext, Attachment
 from embeds.resourse import ResourceEmbed, ResourceInfoEmbed
 from interfaces.resource import ResourceModal, ResourceOpenInBrowserView, ResourceCreateView
 from utils.valid_url import is_valid_url
+from utils.cog_status_printer import status_printer
 
 
 class ResourceCog(discord.Cog):
@@ -62,7 +63,7 @@ class ResourceCog(discord.Cog):
 
     @discord.Cog.listener("on_ready")
     async def on_ready(self):
-        print(f"{Fore.YELLOW + Style.BRIGHT}Source{Fore.RESET + Style.RESET_ALL}\tCog status: \t{Fore.GREEN}[OK]{Fore.RESET}")
+        status_printer("Source")
 
 
 def setup(bot: discord.Bot):
