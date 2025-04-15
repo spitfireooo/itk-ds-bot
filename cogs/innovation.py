@@ -2,8 +2,8 @@ import discord
 
 from discord.ext import commands
 from embeds.innovation import InnovationEmbed, InnovationInfoEmbed
-from interfaces.button import InnovationView
-from interfaces.modal import InnovationModal
+from interfaces.innovation import InnovationView
+from interfaces.innovation import InnovationModal
 from colorama import Fore, Style
 from discord import ApplicationContext, Attachment
 
@@ -15,7 +15,8 @@ class InnovationCog(discord.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @discord.command(name="innovation-info", description="Create embed-message for your innovation /innovation <title> <description>")
+
+    @discord.command(name="innovation-info", description="Open instruction of create innovation /innovation-info")
     @commands.is_owner()
     async def innovation_info(self, ctx: discord.ApplicationContext):
         if ctx.channel_id != 1359496319466471625 and ctx.channel_id != 1359571389488566433:

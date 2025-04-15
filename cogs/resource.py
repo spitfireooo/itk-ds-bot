@@ -1,10 +1,11 @@
 import discord
 
+from discord.ext import commands
 from colorama import Fore, Style
 from discord import ApplicationContext, Attachment
 
-from embeds.resourse import ResourceEmbed
-from interfaces.modal import ResourceModal
+from embeds.resourse import ResourceEmbed, ResourceInfoEmbed
+from interfaces.resource import ResourceModal, ResourceOpenInBrowserView, ResourceCreateView
 from utils.valid_url import is_valid_url
 
 
@@ -12,6 +13,14 @@ class ResourceCog(discord.Cog):
 
     def __init__(self, bot):
         self.bot = bot
+
+
+    @discord.command(name="resource-info", description="Open instruction of create resource /resource-info")
+    @commands.is_owner()
+    async def resource_info(self, ctx: discord.ApplicationContext):
+        if ctx.channel_id != 1359242612745310461 and ctx.channel_id != 1359571389488566433:
+            raise Exception("Bad channel")
+        await ctx.respond(embed=ResourceInfoEmbed(), view=ResourceCreateView(ctx))
 
 
     @discord.command(name="resource", description="Create embed-message for your resource /resource <title> <link>")
@@ -34,7 +43,7 @@ class ResourceCog(discord.Cog):
             link=url,
             file=file if file else None
         )
-        await ctx.respond(embed=embed)
+        await ctx.respond(embed=embed, view=ResourceOpenInBrowserView(ctx, url))
 
 
     @discord.command(name="resource-modal", description="Create embed-message for your resource /resource-modal")
